@@ -179,3 +179,19 @@
 - Pushed as one new commit on top of GitHub's first commit (README), so the earlier
   local commit with the real names is not online. It stays on this PC only as branch
   backup-with-client-names.
+
+## 0.6.0 - 2026-11-23 - One-line installer for colleagues
+- Akash: install like his ERSS tool, with one line pasted in a terminal, which also
+  installs pyRevit when missing and updates an older pyRevit to the latest.
+- install.ps1 (repo root): pyRevit none -> latest, older -> latest (7.1.0.26319 on
+  15 Nov), latest -> left; then ICSPL Export only, into %APPDATA%\ICSPLExport\Extension
+  (registered in pyRevit). Again = update. uninstall.ps1 removes ICSPL Export only.
+- A PC that already loads ICSPL Export from another folder (the development copy) is
+  skipped, so the Export tab never shows twice.
+- README: "Install (one line)" section.
+- Tests: tests\ps_installer.ps1: both scripts parse in PowerShell 5.1 and 7, ASCII;
+  dry run on Akash's PC: pyRevit 7.0.0.26278 -> would update to 7.1.0.26319 (asks to
+  close Revit); development copy found -> not installed twice; GitHub ZIP downloaded
+  and the extension found (version 8b86a9b).
+- Not run for real yet (pyRevit update, copy, registration): first real test on a
+  colleague's PC.

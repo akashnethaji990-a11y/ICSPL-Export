@@ -135,6 +135,23 @@
   Results of live checks: describe them without the real model/project names.
 - Local branch backup-with-client-names holds the first Step 2 commit with the real
   names: NEVER push it.
+
+## Install for colleagues (Akash, 23 Nov: one terminal line, like his ERSS tool)
+- `irm https://raw.githubusercontent.com/akashnethaji990-a11y/ICSPL-Export/main/install.ps1 | iex`
+  (install.ps1 at the repo root; needs the public repo + push to main to work).
+  - pyRevit: none -> latest; older than the latest GitHub release -> update; else
+    leave. Per-user installer pyRevit_<v>_signed.exe (admin one if pyRevit is in
+    Program Files), Inno flags /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-, then
+    `pyrevit attach master default --installed`. Revit must be closed (asks; S skips).
+  - Tool: GitHub ZIP of main -> %APPDATA%\ICSPLExport\Extension\ICSPL Export.extension
+    (replaced on update; settings.json beside it kept), Unblock-File, then
+    `pyrevit extensions paths add %APPDATA%\ICSPLExport\Extension`.
+  - If another registered pyRevit path already holds ICSPL Export.extension (Akash's
+    development folder), it stops: no second Export tab.
+  - Dry run: $env:ICSPL_DRYRUN = "1". uninstall.ps1 = paths forget + delete the folder.
+  - ERSS has its own installer and stays separate; nothing here reads or calls it.
+- Test: `powershell -ExecutionPolicy Bypass -File tests\ps_installer.ps1` (parse +
+  ASCII in 5.1, dry run as text | iex). `pwsh -File tests\ps_installer.ps1 -NoDryRun`.
 - Log each change in HISTORY.md.
 
 ## Version rules
